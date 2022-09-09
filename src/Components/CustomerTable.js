@@ -106,8 +106,6 @@ export default function CustomerTable() {
               <TableCell align="right">{row.idNo}</TableCell>
               <TableCell>
                 <Button startIcon={<DeleteForeverIcon />} />
-              </TableCell>
-              <TableCell>
                 <Button startIcon={<BorderColorIcon />} />
               </TableCell>
             </TableRow>

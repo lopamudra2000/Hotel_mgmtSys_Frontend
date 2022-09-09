@@ -26,9 +26,9 @@ export default function Customer() {
     <div>
       <NavBar />
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Form</DialogTitle>
+        <DialogTitle>Customer Registeration Form</DialogTitle>
         <DialogContent>
-          <DialogContentText>Fill Me</DialogContentText>
+          <DialogContentText>All fields are mandatory</DialogContentText>
           <CustomerForm />
         </DialogContent>
       </Dialog>
@@ -42,7 +42,7 @@ export default function Customer() {
           variant="outlined"
           startIcon={<AddBusinessIcon />}
         >
-          Add Rooms
+          Add New Customer
         </Button>
         <Button variant="contained" endIcon={<FilterAltIcon />}>
           Filters
