@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +10,8 @@ import Paper from "@mui/material/Paper";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { Button } from "@mui/material";
+import axios from "axios";
+import base_url from "../Api";
 
 function createData(
   id,
@@ -37,9 +40,9 @@ function createData(
 const rows = [
   createData(
     1,
-    "Lopamudra",
-    "Giri",
-    "lopamudragiri2@gmail.com",
+    "xyz",
+    "abc",
+    "xyzabc2@gmail.com",
     9080796543,
     "Pune",
     "Female",
@@ -48,9 +51,9 @@ const rows = [
   ),
   createData(
     1,
-    "Lopamudra",
-    "Giri",
-    "lopamudragiri2@gmail.com",
+    "xyz",
+    "abc",
+    "xyzabc2@gmail.com",
     9080796543,
     "Pune",
     "Female",
@@ -59,9 +62,9 @@ const rows = [
   ),
   createData(
     1,
-    "Lopamudra",
-    "Giri",
-    "lopamudragiri2@gmail.com",
+    "xyz",
+    "abc",
+    "xyzabc2@gmail.com",
     9080796543,
     "Pune",
     "Female",
@@ -71,6 +74,20 @@ const rows = [
 ];
 
 export default function CustomerTable() {
+  const getCustomerData = () => {
+    axios.get(`${base_url}customer/get_all`).then(
+      (response) => {
+        console.log(response.data);
+        // setCustomers(response.data)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+  useEffect(() => {
+    getCustomerData();
+  }, []);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">

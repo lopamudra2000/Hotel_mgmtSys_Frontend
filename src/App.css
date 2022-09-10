@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.translayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  opacity: 0.5;
+  height: 300px;
+  width: 500px;
+}
+.frontFont {
+  color: white;
+  font-size: 50px;
+  font-weight: "lighter";
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.setBackground {
+  /* background-image:"url('./assets/hotel1.jpg')"; */
+  background-image: "url('https://www.croatiaweek.com/wp-content/uploads/2020/01/fb1d5efd13-m2001400005-scaled.jpg?x60085')";
+  height: "100vh";
+  margin-top: "-70px";
+  font-size: "50px";
+  background-size: "cover";
+  background-repeat: "no-repeat";
+}

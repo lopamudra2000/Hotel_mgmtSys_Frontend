@@ -13,6 +13,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import LogOut from "../../Components/LogOut";
 export default function Booking() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -27,6 +28,7 @@ export default function Booking() {
       <NavBar />
 
       <Stack direction="row" spacing={2}>
+        <LogOut />
         <Button
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}

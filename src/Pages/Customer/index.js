@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import CustomerTable from "../../Components/CustomerTable";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import LogOut from "../../Components/LogOut";
 
 export default function Customer() {
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -33,6 +34,7 @@ export default function Customer() {
   return (
     <>
       <NavBar />
+      <LogOut />
 
       <Dialog open={dialogOpen} onClose={handleClose}>
         <DialogTitle>Customer Registeration Form</DialogTitle>
@@ -72,6 +74,7 @@ export default function Customer() {
         >
           <MenuItem onClick={handleMenuClose}>All Guests</MenuItem>
           <MenuItem onClick={handleMenuClose}>Checked-Out Guests</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Occupied</MenuItem>
         </Menu>
       </Stack>
       <CustomerTable />

@@ -13,6 +13,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import CheckInForm from "../Components/CheckInForm";
+import axios from "axios";
+import base_url from "../Api";
+import { useEffect } from "react";
+
 function createData(id, roomType, roomPrice, roomStatus, booking) {
   return { id, roomType, roomPrice, roomStatus, booking };
 }
@@ -31,6 +35,20 @@ const rows = [
 ];
 
 export default function BookingTable() {
+  const getRoomData = () => {
+    axios.get(`${base_url}room/get_all`).then(
+      (response) => {
+        console.log(response.data);
+        // setCustomers(response.data)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+  useEffect(() => {
+    getRoomData();
+  }, []);
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const handleClose = () => {
     setDialogOpen(false);
