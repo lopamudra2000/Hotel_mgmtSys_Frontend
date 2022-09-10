@@ -1,36 +1,17 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import * as React from "react"; 
 import { Link } from "react-router-dom";
+import {Card} from "@mui/material";
+import {CardBody} from "reactstrap";
 
 export default function NavBar() {
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Hotel Management System
-          </Typography>
+  return(
+      <div>
+        <Card className="my-2 bg-primary bg-gradient">
+          <CardBody>
+            <h1 className="text-center my-2 text-white ">Welcome to Hotel Management Application</h1>
+          </CardBody>
+        </Card>
 
-          <Button component={Link} to="/signin" color="inherit">
-            Logout
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+      </div>
   );
 }
