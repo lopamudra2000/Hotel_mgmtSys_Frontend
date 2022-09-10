@@ -11,6 +11,7 @@ import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import Stack from "@mui/material/Stack";
 import CustomerTable from "../../Components/CustomerTable";
+import { Grid } from "@mui/material";
 
 export default function Customer() {
   const [open, setOpen] = React.useState(false);
@@ -23,8 +24,9 @@ export default function Customer() {
     setOpen(false);
   };
   return (
-    <div>
+    <>
       <NavBar />
+
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Customer Registeration Form</DialogTitle>
         <DialogContent>
@@ -36,6 +38,7 @@ export default function Customer() {
         <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={handleClose}>Subscribe</Button>
       </DialogActions> */}
+
       <Stack direction="row" spacing={2}>
         <Button
           onClick={handleClickOpen}
@@ -49,6 +52,6 @@ export default function Customer() {
         </Button>
       </Stack>
       <CustomerTable />
-    </div>
+    </>
   );
 }
