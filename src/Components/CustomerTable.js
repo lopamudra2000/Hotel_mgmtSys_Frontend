@@ -49,28 +49,6 @@ const rows = [
     "Adhar",
     7489
   ),
-  createData(
-    1,
-    "xyz",
-    "abc",
-    "xyzabc2@gmail.com",
-    9080796543,
-    "Pune",
-    "Female",
-    "Adhar",
-    7489
-  ),
-  createData(
-    1,
-    "xyz",
-    "abc",
-    "xyzabc2@gmail.com",
-    9080796543,
-    "Pune",
-    "Female",
-    "Adhar",
-    7489
-  ),
 ];
 
 export default function CustomerTable() {

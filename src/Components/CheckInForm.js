@@ -3,17 +3,32 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import { Button, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import base_url from "../Api";
 export default function CustomerForm() {
+  const postCustomerData = (data) => {
+    console.log(data);
+    axios.post(`${base_url}booking/create`, data).then(
+      (response) => {
+        console.log(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const bookData = {
       id: data.get("id"),
+      user_id: data.get("user_id"),
       room_id: data.get("room_id"),
       check_in: data.get("check_in"),
       check_out: data.get("check_out"),
-      bill: data.get("bill"),
-    });
+    };
+    console.log(bookData);
+    postCustomerData(bookData);
   };
   return (
     <Box
@@ -61,9 +76,6 @@ export default function CustomerForm() {
               label="Check-Out"
               type="date"
             />
-          </Grid>
-          <Grid item xs={6} md={8}>
-            <TextField id="bill" name="bill" label="Bill" />
           </Grid>
         </Grid>
       </FormControl>

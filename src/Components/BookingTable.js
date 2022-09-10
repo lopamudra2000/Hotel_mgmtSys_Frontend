@@ -15,31 +15,22 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CheckInForm from "../Components/CheckInForm";
 import axios from "axios";
 import base_url from "../Api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function createData(id, roomType, roomPrice, roomStatus, booking) {
   return { id, roomType, roomPrice, roomStatus, booking };
 }
 
-const rows = [
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-  createData(1, "Deluxe", 5000, "Occupied"),
-];
+const rows = [createData(1, "Deluxe", 5000, "Occupied")];
 
 export default function BookingTable() {
+  const [data, setData] = useState({});
   const getRoomData = () => {
     axios.get(`${base_url}room/get_all`).then(
       (response) => {
         console.log(response.data);
         // setCustomers(response.data)
+        setData(response.data);
       },
       (error) => {
         console.log(error);
