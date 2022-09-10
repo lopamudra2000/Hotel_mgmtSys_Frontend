@@ -8,7 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import { Button } from "@mui/material";
-
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import CheckInForm from "../Components/CheckInForm";
 function createData(id, roomType, roomPrice, roomStatus, booking) {
   return { id, roomType, roomPrice, roomStatus, booking };
 }
@@ -27,8 +31,22 @@ const rows = [
 ];
 
 export default function BookingTable() {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const handleClose = () => {
+    setDialogOpen(false);
+  };
+  const handleClickOpen = () => {
+    setDialogOpen(true);
+  };
   return (
     <TableContainer component={Paper}>
+      <Dialog open={dialogOpen} onClose={handleClose}>
+        <DialogTitle>Customer Registeration Form</DialogTitle>
+        <DialogContent>
+          <DialogContentText>All fields are mandatory</DialogContentText>
+          <CheckInForm />
+        </DialogContent>
+      </Dialog>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -51,7 +69,11 @@ export default function BookingTable() {
               <TableCell align="right">{row.roomPrice}</TableCell>
               <TableCell align="right">{row.roomStatus}</TableCell>
               <TableCell>
-                <Button variant="outlined" startIcon={<BookOnlineIcon />}>
+                <Button
+                  onClick={handleClickOpen}
+                  variant="outlined"
+                  startIcon={<BookOnlineIcon />}
+                >
                   Book
                 </Button>
               </TableCell>

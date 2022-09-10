@@ -14,7 +14,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 export default function Booking() {
-  const [dialogOpen, setDialogOpenOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -23,31 +22,11 @@ export default function Booking() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  const handleClickOpen = () => {
-    setDialogOpenOpen(true);
-  };
-
-  const handleClose = () => {
-    setDialogOpenOpen(false);
-  };
   return (
     <div>
       <NavBar />
-      <Dialog open={dialogOpen} onClose={handleClose}>
-        <DialogTitle>Check-In Form</DialogTitle>
-        <DialogContent>
-          <DialogContentText>All Fields are required</DialogContentText>
-          <CheckInForm />
-        </DialogContent>
-      </Dialog>
+
       <Stack direction="row" spacing={2}>
-        <Button
-          onClick={handleClickOpen}
-          variant="outlined"
-          startIcon={<PersonAddAltIcon />}
-        >
-          Customer Check-In
-        </Button>
         <Button
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}
