@@ -8,35 +8,38 @@ import BookingTable from "../../Components/BookingTable";
 import NavBar from "../../Components/NavBar";
 import CheckInForm from "../../Components/CheckInForm";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 export default function Booking() {
-  const [open, setOpen] = React.useState(false);
-
+  const [dialogOpen, setDialogOpenOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
   const handleClickOpen = () => {
-    setOpen(true);
+    setDialogOpenOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setDialogOpenOpen(false);
   };
   return (
     <div>
       <NavBar />
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={dialogOpen} onClose={handleClose}>
         <DialogTitle>Check-In Form</DialogTitle>
         <DialogContent>
           <DialogContentText>All Fields are required</DialogContentText>
           <CheckInForm />
         </DialogContent>
       </Dialog>
-      {/* <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
-      </DialogActions> */}
       <Stack direction="row" spacing={2}>
         <Button
           onClick={handleClickOpen}
@@ -45,9 +48,31 @@ export default function Booking() {
         >
           Customer Check-In
         </Button>
-        <Button variant="contained" endIcon={<FilterAltIcon />}>
+        <Button
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          variant="contained"
+          endIcon={<FilterAltIcon />}
+        >
           Filters
         </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleMenuClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={handleMenuClose}>Price</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Type</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Status</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Remove Filters</MenuItem>
+        </Menu>
       </Stack>
       <BookingTable />
     </div>

@@ -6,22 +6,24 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import BookOnlineIcon from "@mui/icons-material/BookOnline";
+import { Button } from "@mui/material";
 
 function createData(id, roomType, roomPrice, roomStatus, booking) {
   return { id, roomType, roomPrice, roomStatus, booking };
 }
 
 const rows = [
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
-  createData(1, "Deluxe", 5000, "Occupied", "book"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
+  createData(1, "Deluxe", 5000, "Occupied"),
 ];
 
 export default function BookingTable() {
@@ -34,7 +36,6 @@ export default function BookingTable() {
             <TableCell align="right">Room Type</TableCell>
             <TableCell align="right">Room Price</TableCell>
             <TableCell align="right">Room Status</TableCell>
-            <TableCell align="right">Booking</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,7 +50,11 @@ export default function BookingTable() {
               <TableCell align="right">{row.roomType}</TableCell>
               <TableCell align="right">{row.roomPrice}</TableCell>
               <TableCell align="right">{row.roomStatus}</TableCell>
-              <TableCell align="right">{row.booking}</TableCell>
+              <TableCell>
+                <Button variant="outlined" startIcon={<BookOnlineIcon />}>
+                  Book
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
