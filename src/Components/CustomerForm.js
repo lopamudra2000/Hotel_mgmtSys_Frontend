@@ -7,7 +7,20 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Button, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import base_url from "../Api";
 export default function CustomerForm() {
+  const postCustomerData = (data) => {
+    console.log(data);
+    axios.post(`${base_url}customer/create`, data).then(
+      (response) => {
+        console.log(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -21,6 +34,18 @@ export default function CustomerForm() {
       gov_id_type: data.get("gov_id_type"),
       id_no: data.get("id_no"),
     });
+    const customerData = {
+      id: "",
+      first_name: data.get("first_name"),
+      last_name: data.get("last_name"),
+      email: data.get("email"),
+      mobile_no: data.get("mobile_no"),
+      address: data.get("address"),
+      gender: data.get("gender"),
+      gov_id_type: data.get("gov_id_type"),
+      id_no: data.get("id_no"),
+    };
+    postCustomerData(customerData);
   };
   return (
     <Box

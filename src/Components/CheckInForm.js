@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import base_url from "../Api";
 export default function CustomerForm() {
-  const postCustomerData = (data) => {
+  const postBookingData = (data) => {
     console.log(data);
     axios.post(`${base_url}booking/create`, data).then(
       (response) => {
@@ -28,7 +28,7 @@ export default function CustomerForm() {
       check_out: data.get("check_out"),
     };
     console.log(bookData);
-    postCustomerData(bookData);
+    postBookingData(bookData);
   };
   return (
     <Box
