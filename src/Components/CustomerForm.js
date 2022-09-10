@@ -9,12 +9,16 @@ import { Button, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import axios from "axios";
 import base_url from "../Api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function CustomerForm() {
   const postCustomerData = (data) => {
     console.log(data);
     axios.post(`${base_url}customer/create`, data).then(
       (response) => {
         console.log(response.data);
+        toast.success("Customer Details Added Successfully");
       },
       (error) => {
         console.log(error);
@@ -143,6 +147,7 @@ export default function CustomerForm() {
       </FormControl>
       <Button type="submit">Submit</Button>
       <Button>Cancel</Button>
+      <ToastContainer />
     </Box>
   );
 }

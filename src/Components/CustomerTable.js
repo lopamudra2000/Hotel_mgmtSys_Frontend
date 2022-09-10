@@ -56,6 +56,7 @@ export default function CustomerTable() {
     axios.get(`${base_url}customer/get_all`).then(
       (response) => {
         console.log(response.data);
+        // Toastify.success("Title", "This is the body of the notification");
         // setCustomers(response.data)
       },
       (error) => {
